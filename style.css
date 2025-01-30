@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(247, 247, 228);
+
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 2em;
+    border: 1px solid red;
+
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    height: 3em;
+    border: 1px solid #ccc;
+    border-radius: 0.7em;
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+.add-btn {
+    width: 15em;
+    height: 3em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: red;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+ul li {
+    background: #cce5ff;
+    /* margin: 5px 0;
+    padding: 0.5em;
+    height: 2em;
+    border-radius: 0.7em; */
+
+}
+
+li {
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px 0;
+    padding: 0.5em;
+    height: 2.5em;
+    border-radius: 0.7em;
+
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+.items {
+    width: 100%;
+
+}
+
+
+.delete-btn {
+    border: none;
+    font-size: 0.8em;
+    background: none;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
+
+.radio-btn {
+    margin-right: 40em;
+    font-size: 0.5em;
+    transform: scale(1.2);
+}
+
+.textSpan {
+    margin-left: 20em;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: red;
+}
+
+
+.done-items>li {
+    background: #cce5ff;
+    border-radius: 0.7em;
+    width: 100%;
+    margin: 5px 0;
+    padding: 0.5em;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: space-between;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 60rem;
+    background-color: #f3f3f3;
+    padding: 5rem 6rem;
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.5s;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    transition: all 0.5s;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+;

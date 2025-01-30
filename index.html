@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h2>My To Do List</h2>
+            <input type="text" placeholder="My to do...">
+            <button class="add-btn">Add</button>
+        </div>
+
+        <div class="items">
+            <ul class="items__list">
+                <!-- <li>Get up</li>
+                <li>Coffee or Tea</li>
+                <li>Go to work</li>
+                <li>Come back from work</li>
+                <li>Lunch</li>
+                <li>Dev. challenge</li> -->
+                <!-- <li></li> -->
+            </ul>
+        </div>
+        <div class="check">
+            <h2 class="done">Done</h2>
+            <div class="done-items"></div>
+        </div>
+        <div class="modal hidden">
+            <h2 class="modal__header">Edit your To-do <br />here </h2>
+            <input type="text" class="modal-input">
+            <button class="edit-done-btn">Done</button>
+        </div>
+        <div class="overlay hidden"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+
+</body>
+
+</html>
