@@ -37,11 +37,11 @@ function createListItem(text, isDone) {
     const textSpan = document.createElement("span");
     textSpan.textContent = text;
 
-    const editButton = document.createElement("button");
+    const editButton = document.createElement("span");
     editButton.innerHTML = `<ion-icon name="create-outline"></ion-icon>`;
     editButton.classList.add("edit-btn");
 
-    const deleteButton = document.createElement("button");
+    const deleteButton = document.createElement("span");
     deleteButton.innerHTML = `<ion-icon name="close-outline"></ion-icon>`;
     deleteButton.classList.add("delete-btn");
 
@@ -64,7 +64,6 @@ function createListItem(text, isDone) {
     editButton.addEventListener("click", function () {
         modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
-        console.log(editButton)
         currentItem = textSpan;
         modalInput.value = textSpan.textContent;
     })
@@ -104,7 +103,19 @@ function createListItem(text, isDone) {
 
 function saveToLocalStorage(text, isDone) {
     let items = JSON.parse(localStorage.getItem("todoItems")) || [];
-    items.push({ text, isDone });
+    let lastId = 0;
+    if (items.length > 0) {
+        lastId = items.reduce(function (prev, current) {
+            return (prev && prev.id > current.id) ? prev.id : current.id
+        })
+    }
+
+    let itemObj = {
+        id: lastId + 1,
+        text,
+        isDone
+    }
+    items.push(itemObj);
     localStorage.setItem("todoItems", JSON.stringify(items));
 }
 
@@ -117,7 +128,7 @@ function removeFromLocalStorage(text) {
 function loadItemsFromLocalStorage() {
     let items = JSON.parse(localStorage.getItem("todoItems")) || [];
 
-    items.forEach(item => {
+    items.reverse().forEach(item => {
         const listItem = createListItem(item.text, item.isDone);
         if (item.isDone) {
             doneItems.appendChild(listItem);
