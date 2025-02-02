@@ -71,9 +71,10 @@ function createListItem(text, isDone) {
         if (currentItem) {
             const updatedText = modalInput.value.trim();
             if (updatedText) {
+                let oldText = currentItem.textContent;
                 currentItem.textContent = updatedText;
 
-                updateLocalStorage(currentItem.textContent, updatedText);
+                updateLocalStorage(oldText, updatedText);
             }
         }
         modal.classList.add("hidden");
@@ -82,7 +83,7 @@ function createListItem(text, isDone) {
 
     function updateLocalStorage(oldText, newText) {
         let items = JSON.parse(localStorage.getItem("todoItems")) || [];
-        items = items.map(item => item.text === oldText ? { text: newText, isDone: item.isDone } : item);
+        items = items.map(item => item.text === oldText ? { ...item, text: newText } : item);
         localStorage.setItem("todoItems", JSON.stringify(items));
     };
 
@@ -103,18 +104,18 @@ function createListItem(text, isDone) {
 
 function saveToLocalStorage(text, isDone) {
     let items = JSON.parse(localStorage.getItem("todoItems")) || [];
-    let lastId = 0;
-    if (items.length > 0) {
-        lastId = items.reduce(function (prev, current) {
-            return (prev && prev.id > current.id) ? prev.id : current.id
-        })
-    }
+    let lastId = items.length > 0 ? Math.max(...items.map(item => item.id)) : 0
+    // if (items.length > 0) {
+    //     lastId = items.reduce(function (prev, current) {
+    //         return (prev && prev.id > current.id) ? prev.id : current.id
+    //     })
+    // }
 
     let itemObj = {
         id: lastId + 1,
         text,
         isDone
-    }
+    };
     items.push(itemObj);
     localStorage.setItem("todoItems", JSON.stringify(items));
 }
